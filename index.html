@@ -22,6 +22,19 @@
 
   <main class="grid-container">
 
+    <section class="card clients">
+      <div class="card-title">
+        <h2>Base de Clientes</h2>
+      </div>
+
+      <div class="client-list" id="clientListContainer">
+        <button class="client-item" onclick="seleccionarCliente('cliente1', this)">Cliente 1 (Riesgo Alto) </button>
+        <button class="client-item" onclick="seleccionarCliente('cliente2', this)">Cliente 2 (Riesgo Medio)</button>
+        <button class="client-item" onclick="seleccionarCliente('cliente3', this)">Cliente 3 (Riesgo Bajo)</button>
+        <button class="client-item active" onclick="seleccionarCliente('', this)" style="margin-top: 10px;">Personalizado / Nuevo</button>
+      </div>
+    </section>
+
     <section class="card metrics">
       <div class="card-title">
         <h2>Metricas</h2>
@@ -45,7 +58,10 @@
         <input id="quejas" placeholder="Número de quejas">
       </div>
 
-      <button class="btn-generate" onclick="evaluar()">Evaluar</button>
+      <div class="actions-group">
+        <button class="btn-clear" onclick="limpiarMetricas()">Borrar</button>
+        <button class="btn-generate" onclick="evaluar()">Evaluar</button>
+      </div>
     </section>
 
     
@@ -54,11 +70,10 @@
         <h2>Semáforo de Riesgo</h2>
       </div>
       <div class="traffic-light-container">
-        <div class="traffic-light"></div>
+        <div class="traffic-light" id="indicadorSemaforo"></div>
       </div>
-      <p class="risk-level">RIESGO: <span>MEDIO</span></p>
-      <p class="risk-description">Ejemplo: El cliente muestra un nivel de riesgo moderado debido a las quejas abiertas recientes. Clasificación: Ámbar.</p>
-      <div class="risk-description" id="resultado">Aqui va el resultado del analisis</div>
+      <p class="risk-level" id="nivelRiesgoSpan">RIESGO: <span>-</span></p>
+      <div class="risk-description" id="resultado">Esperando datos...</div>
     </section>
 
     <section class="card suggested-actions">
@@ -66,7 +81,7 @@
         <h2>Lista de Acciones Sugeridas</h2>
       </div>
       <div class="suggestions-container">
-        <p>Aqui irian las acciones sugeridas.</p>
+        <p id="acciones">Aqui irian las acciones sugeridas.</p>
       </div>
     </section>
 
