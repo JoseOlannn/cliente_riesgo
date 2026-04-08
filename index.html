@@ -1,23 +1,83 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Detector de Riesgo de Clientes</title>
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-  <h1>Detector de Clientes en Riesgo</h1>
+  <header class="sticky-header">
+    <div class="logo-container">
+      <div class="logo-placeholder">T</div>
+      <span class="company-name">TRAXION</span>
+    </div>
+    <div class="icon-profile">
+      <img src="assets/profile-icon.png" alt="" width="25px" height="25px">
+    </div>
+  </header>
 
-<input id="servicio" placeholder="Nivel de servicio (%)">
-<input id="puntualidad" placeholder="Puntualidad (%)">
-<input id="nps" placeholder="NPS">
-<input id="quejas" placeholder="Número de quejas">
+  <main class="grid-container">
 
-<button onclick="evaluar()">Evaluar</button>
+    <section class="card metrics">
+      <div class="card-title">
+        <h2>Metricas</h2>
+      </div>
 
-<div id="resultado"></div>
+      <div class="metric-group">
+        <label for="servicio">Nivel de Servicio</label>
+        <input id="servicio" placeholder="Nivel de servicio (%)">
 
-  <script src="script.js"></script>
+      </div>
+      <div class="metric-group">
+        <label for="puntualidad">Puntualidad</label>
+        <input id="puntualidad" placeholder="Puntualidad (%)">
+      </div>
+      <div class="metric-group">
+        <label for="nps">NPS (Net Promoter Score)</label>
+        <input id="nps" placeholder="NPS">
+      </div>
+      <div class="metric-group">
+        <label for="quejas">Quejas Abiertas</label>
+        <input id="quejas" placeholder="Número de quejas">
+      </div>
+
+      <button class="btn-generate" onclick="evaluar()">Evaluar</button>
+    </section>
+
+    
+    <section class="card risk-indicator">
+      <div class="card-title">
+        <h2>Semáforo de Riesgo</h2>
+      </div>
+      <div class="traffic-light-container">
+        <div class="traffic-light"></div>
+      </div>
+      <p class="risk-level">RIESGO: <span>MEDIO</span></p>
+      <p class="risk-description">Ejemplo: El cliente muestra un nivel de riesgo moderado debido a las quejas abiertas recientes. Clasificación: Ámbar.</p>
+      <div class="risk-description" id="resultado">Aqui va el resultado del analisis</div>
+    </section>
+
+    <section class="card suggested-actions">
+      <div class="card-title">
+        <h2>Lista de Acciones Sugeridas</h2>
+      </div>
+      <div class="suggestions-container">
+        <p>Aqui irian las acciones sugeridas.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer  class="main-footer">
+    <p><a href="#">Aviso de Privacidad</a> | <a href="#">Términos de Servicio</a> | <a href="#">Contacto</a> | <a href="#">Mapa del Sitio</a></p>
+    <p>© 2026 TRAXION. Todos los derechos reservados. | Soporte Técnico</p>
+  </footer>
+  
 </body>
+
+<script src="script.js"></script>
 </html>

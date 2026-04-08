@@ -1,4 +1,250 @@
+* {
+  padding: 0%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* --- Variables de Color y Estilos Globales --- */
+:root {
+  --bg-color: #1b2632;
+  --complementary-bg-color: #2c3b4d;
+  --text-color: #eee9df;
+  --primary-color: #ffb162;
+  --secondary-color: #a35139;
+  --green: #00e013;
+  --yellow: #ffe600;
+  --red: #ff0000;
+  --border-radius: 8px;
+  --spacing: 20px;
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 body {
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+
+/* --- Sticky Header --- */
+.sticky-header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: var(--complementary-bg-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-placeholder {
+  width: 30px;
+  height: 30px;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.icon-profile {
+  display: flex;
+  justify-content: center;
+  background-color: var(--bg-color);
+  border-radius: var(--border-radius);
+  width: 4%;
+  padding: 5px;
+}
+
+.company-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+
+/* --- Grid Container para Tarjetas --- */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--spacing);
+  padding: var(--spacing);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Responsividad:*/
+@media (min-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: stretch;
+    height: 78vh;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .metric-group,
+  .risk-description,
+  .suggestions-container {
+    flex-grow: 1;
+  }
+}
+
+
+/* --- Estilos Generales de Tarjeta --- */
+.card {
+  background-color: var(--complementary-bg-color);
+  padding: var(--spacing);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.card .card-title {
+  background-color: var(--primary-color);
+  margin: calc(var(--spacing) * -1) calc(var(--spacing) * -1) var(--spacing) calc(var(--spacing) * -1);
+  padding: 10px var(--spacing);
+}
+
+.card h2 {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+/* --- Tarjeta 1: Carga de Métricas --- */
+.metric-group {
+  display: flex;
+  margin-bottom: 15px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.metric-group label {
+  font-weight: bold;
+  flex: 1;
+  margin-bottom: 0;
+}
+
+
+.btn-generate {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--primary-color);
+  border: none;
+  color: var(--text-color);
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: var(--spacing);
+  text-transform: uppercase;
+}
+
+.btn-generate:hover {
+  background-color: #ff9429;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+input {
+  width: 50%;
+  padding: 8px;
+  border: 2px solid var(--primary-color);
+  border-radius: 4px;
+  background-color: #f3ede0;
+  color: var(--complementary-bg-color);
+}
+
+input:focus {
+  outline: none;
+  box-shadow: 0 2px 10px rgba(255, 112, 16, 0.5);
+  transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+
+/* --- Tarjeta 2: Semáforo de Riesgo --- */
+.traffic-light-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--spacing);
+  background-color: #27272b;
+  gap: 8px;
+  padding: 40px;
+  border-radius: 20px;
+}
+
+.traffic-light {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: var(--yellow);
+}
+
+.risk-level {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.risk-level span {
+  color: var(--yellow);
+}
+
+.risk-description {
+  font-size: 0.9rem;
+  text-align: center;
+  color: var(--text-color);
+}
+
+/* --- Tarjeta 3: Lista de Acciones Sugeridas --- */
+.suggestions-container {
+  font-size: 0.9rem;
+  text-align: center;
+  color: var(--text-color);
+  flex-grow: 1;
+}
+
+/* --- Footer --- */
+.main-footer {
+  background-color: var(--complementary-bg-color);
+  text-align: center;
+  padding: var(--spacing);
+  margin-top: var(--spacing);
+  font-size: 0.8rem;
+  color: #c9c1b1;
+  border-top: 1px solid #ccc;
+}
+
+.main-footer a {
+  color: #c9c1b1;
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+.main-footer a:hover {
+  color: #ffb162;
+  text-decoration: underline;
+}
+
+
+/*body {
   font-family: Arial;
   text-align: center;
   margin-top: 50px;
@@ -27,5 +273,4 @@ button {
   font-weight: bold;
   width: 200px;
   margin: 10px auto;
-}
-
+}*/
