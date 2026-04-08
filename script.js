@@ -1,57 +1,64 @@
 function evaluar() {
-  // Obtener datos del formulario
   const servicio = parseInt(document.getElementById("servicio").value);
   const puntualidad = parseInt(document.getElementById("puntualidad").value);
   const nps = parseInt(document.getElementById("nps").value);
   const quejas = parseInt(document.getElementById("quejas").value);
 
-  // Validación básica
   if (isNaN(servicio) || isNaN(puntualidad) || isNaN(nps) || isNaN(quejas)) {
     document.getElementById("resultado").innerHTML =
-      "<p style='color:red;'>Por favor ingresa todos los datos correctamente</p>";
+      "<p style='color:red;'>Por favor ingresa todos los datos</p>";
     return;
   }
 
-  // Mostrar mensaje de carga
-  document.getElementById("resultado").innerHTML =
-    "<p>Analizando cliente...</p>";
+  document.getElementById("resultado").innerHTML = "Analizando...";
 
-  // Enviar datos a n8n
-  fetch("https://joseolan.app.n8n.cloud/webhook-test/cliente-riesgo", {
+  fetch("https://joseolan.app.n8n.cloud/webhook/cliente-riesgo", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      servicio: servicio,
-      puntualidad: puntualidad,
-      nps: nps,
-      quejas: quejas
+      servicio,
+      puntualidad,
+      nps,
+      quejas
     })
   })
-    .then(response => {
-      console.log("Respuesta cruda:", response);
+    .then(res => res.json())
+    .then(data => {
 
-      if (!response.ok) {
-        throw new Error("Error en la respuesta del servidor");
+      let color = "";
+      let emoji = "";
+
+      if (data.nivel.includes("ALTO")) {
+        color = "red";
+        emoji = "🔴";
+      } else if (data.nivel.includes("MEDIO")) {
+        color = "orange";
+        emoji = "🟡";
+      } else {
+        color = "green";
+        emoji = "🟢";
       }
 
-      return response.json();
-    })
-    .then(data => {
-      console.log("Respuesta JSON:", data);
-
-      // Mostrar resultado en pantalla
       document.getElementById("resultado").innerHTML = `
         <h3>Resultado</h3>
-        <p><strong>Riesgo:</strong> ${data.nivel}</p>
-        <p><strong>Problemas:</strong> ${data.problemas.join(", ")}</p>
+
+        <div class="semaforo" style="background:${color}">
+          ${emoji} ${data.nivel}
+        </div>
+
+        <p><strong>Problemas:</strong> ${data.problemas.join(", ") || "Ninguno"}</p>
         <p><strong>Acción:</strong> ${data.accion}</p>
+
+        <p><strong>Diagnóstico:</strong> 
+        El cliente presenta riesgo ${data.nivel.toLowerCase()} debido a 
+        ${data.problemas.join(", ") || "condiciones estables"}.
+        </p>
       `;
     })
-    .catch(error => {
-      console.error("Error:", error);
-
+    .catch(err => {
+      console.error(err);
       document.getElementById("resultado").innerHTML =
         "<p style='color:red;'>Error al conectar con el agente</p>";
     });

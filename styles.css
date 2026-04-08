@@ -19,3 +19,13 @@ button {
   margin-top: 20px;
   font-size: 18px;
 }
+
+.semaforo {
+  padding: 15px;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  width: 200px;
+  margin: 10px auto;
+}
+
