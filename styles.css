@@ -4,6 +4,39 @@
   box-sizing: border-box;
 }
 
+/*Modo oscuro/claro*/
+#toggle-mode {
+  background: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  padding: 5px 5px;
+  margin-left: 4px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* El contenedor que los agrupa a la derecha del header */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Aquí controlas la separación entre los dos cuadros */
+}
+
+body.light-mode {
+  --bg-color: var(--bg-color-light);
+  --complementary-bg-color: var(--complementary-bg-color-light);
+  --text-color: var(--text-color-light);
+  --primary-color: var(--primary-color-light);
+  --secondary-color: var(--secondary-color-light);
+}
+
+/* Esto aplica automáticamente porque tus estilos usan variables */
+
+#toggle-mode:hover {
+  background-color: #ff9429;
+}
+
 /* --- Variables de Color y Estilos Globales --- */
 :root {
   --bg-color: #1b2632;
@@ -17,7 +50,29 @@
   --border-radius: 8px;
   --spacing: 20px;
   --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  /* Modo oscuro por defecto */
+  --bg-color: #1b2632;
+  --complementary-bg-color: #2c3b4d;
+  --text-color: #eee9df;
+  --primary-color: #ffb162;
+  --secondary-color: #a35139;
+  --green: #00e013;
+  --yellow: #ffe600;
+  --red: #ff0000;
+
+  --border-radius: 8px;
+  --spacing: 20px;
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  /* Colores modo claro */
+  --bg-color-light: #f5f5f5;
+  --complementary-bg-color-light: #ffffff;
+  --text-color-light: #1b2632;
+  --primary-color-light: #ffb162;
+  --secondary-color-light: #a35139;
 }
+
 
 body {
   font-family: var(--font-family);
@@ -60,12 +115,12 @@ body {
 }
 
 .icon-profile {
+  background-color: #1e293b; 
+  padding: 8px;
+  border-radius: 8px;
   display: flex;
+  align-items: center;
   justify-content: center;
-  background-color: var(--bg-color);
-  border-radius: var(--border-radius);
-  width: 4%;
-  padding: 5px;
 }
 
 .company-name {
@@ -219,6 +274,11 @@ input:focus {
   text-align: center;
   color: var(--text-color);
   flex-grow: 1;
+}
+
+.risk-data{
+    text-align: center;
+
 }
 
 /* --- Footer --- */

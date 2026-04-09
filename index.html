@@ -11,14 +11,19 @@
 <body>
 
   <header class="sticky-header">
-    <div class="logo-container">
-      <div class="logo-placeholder">T</div>
-      <span class="company-name">TRAXION</span>
-    </div>
-    <div class="icon-profile">
-      <img src="assets/profile-icon.png" alt="" width="25px" height="25px">
-    </div>
-  </header>
+  <div class="logo-container">
+    <div class="logo-placeholder">T</div>
+    <span class="company-name">TRAXION</span>
+  </div>
+  
+  <div class="header-actions">
+  <div class="icon-profile">
+    <img src="assets/profile-icon.png" alt="Perfil" width="25px">
+  </div>
+
+  <button id="toggle-mode" class="mode-button" title="Cambiar modo">🌞</button>
+  </div>
+ </header>
 
   <main class="grid-container">
 
@@ -50,25 +55,40 @@
 
     
     <section class="card risk-indicator">
-      <div class="card-title">
-        <h2>Semáforo de Riesgo</h2>
-      </div>
-      <div class="traffic-light-container">
-        <div class="traffic-light"></div>
-      </div>
-      <p class="risk-level">RIESGO: <span>MEDIO</span></p>
-      <p class="risk-description">Ejemplo: El cliente muestra un nivel de riesgo moderado debido a las quejas abiertas recientes. Clasificación: Ámbar.</p>
-      <div class="risk-description" id="resultado">Aqui va el resultado del analisis</div>
-    </section>
+  <div class="card-title">
+    <h2>Semáforo de Riesgo</h2>
+  </div>
 
-    <section class="card suggested-actions">
-      <div class="card-title">
-        <h2>Lista de Acciones Sugeridas</h2>
-      </div>
-      <div class="suggestions-container">
-        <p>Aqui irian las acciones sugeridas.</p>
-      </div>
-    </section>
+  <!-- Semáforo visual -->
+  <div class="traffic-light-container">
+    <div id="semaforo" class="traffic-light" style="width:50px; height:50px; border-radius:50%; background:green; margin-bottom:10px;"></div>
+  </div>
+
+  <!-- Datos individuales -->
+  <p class="risk-level">RIESGO: <span id="nivel">MEDIO</span></p>
+  <p class="risk-description" id="descripcion">Ejemplo: El cliente muestra un nivel de riesgo moderado debido a las quejas abiertas recientes.</p>
+
+  <div class="risk-data" >
+    <p id="problemas">Problemas detectados: Ninguno</p>
+    <p id="problema-principal">Problema principal: Ninguno</p>
+    <p id="prioridad">Prioridad: Baja</p>
+    <p id="tiempo">Tiempo de acción: Esta semana</p>
+    <p id="responsable">Responsable: Account Manager</p>
+  </div>
+</section>
+
+<section class="card suggested-actions">
+  <div class="card-title">
+    <h2>Lista de Acciones Sugeridas</h2>
+  </div>
+  <div class="suggestions-container">
+    <h4>Acciones específicas</h4>
+    <pre id="acciones-especificas">Aquí irían las acciones específicas.</pre>
+    <br>
+    <h4>Acciones generales</h4>
+    <pre id="acciones-generales">Aquí irían las acciones generales.</pre>
+  </div>
+</section>
 
   </main>
 
