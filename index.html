@@ -27,6 +27,19 @@
 
   <main class="grid-container">
 
+    <section class="card clients">
+      <div class="card-title">
+        <h2>Base de Clientes</h2>
+      </div>
+
+      <div class="client-list" id="clientListContainer">
+        <button class="client-item" onclick="seleccionarCliente('cliente1', this)">Cliente 1 (Riesgo Alto) </button>
+        <button class="client-item" onclick="seleccionarCliente('cliente2', this)">Cliente 2 (Riesgo Medio)</button>
+        <button class="client-item" onclick="seleccionarCliente('cliente3', this)">Cliente 3 (Riesgo Bajo)</button>
+        <button class="client-item active" onclick="seleccionarCliente('', this)" style="margin-top: 10px;">Personalizado / Nuevo</button>
+      </div>
+    </section>
+
     <section class="card metrics">
       <div class="card-title">
         <h2>Metricas</h2>
@@ -50,7 +63,10 @@
         <input id="quejas" placeholder="Número de quejas">
       </div>
 
-      <button class="btn-generate" onclick="evaluar()">Evaluar</button>
+      <div class="actions-group">
+        <button class="btn-clear" onclick="limpiarMetricas()">Borrar</button>
+        <button class="btn-generate" onclick="evaluar()">Evaluar</button>
+      </div>
     </section>
 
     
